@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+DIRT - has encryption to Your IRC.
+-------------------------------------------------------------------------------
+
+Current code organization/status:
+
+bin2c:			Quality.
+
+misc:			OK.
+
+cfg/ini:		OK.
+syntax:			OK.
+
+net:			OK.
+
+fish:			OK.
+dh1080:			OK.
+key:			Overly complex, but works well.
+
+main/proxy:		Could be split into smaller parts, but OK.
+
+unix:			OK.
+
+windows:		OK.

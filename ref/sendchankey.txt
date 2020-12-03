@@ -1,0 +1,23 @@
+-------------------------------------------------------------------------------
+                     The Dirt IRC SENDCHANKEY protocol v1.0
+-------------------------------------------------------------------------------
+
+Dirt has implemented a VERY simple way of sending channel keys.
+
+
+It first makes sure that the transmission is encrypted (there is a key set and
+enabled for the recipient's nick name), and then does
+  NOTICE <key-receiver> :SENDCHANKEY <#channel> <key>
+Where <key> is not encoded in any special way.
+
+The recipient then sends back
+  NOTICE <key-sender> :ACCEPTCHANKEY <#channel>
+This step is not considered obligatory though.
+
+If you are writing a script or using commands in an IRC client somehow, it will
+add the ":" in front of the text part of raw server messages by itself, thus:
+  /notice <key-receiver> SENDCHANKEY <#channel> <key>
+
+This is currently not supported by any other IRC clients or scripts, but has
+the same safety as any other encrypted messages and will be understood even if
+the other end is not using Dirt, providing that the communication is decrypted.

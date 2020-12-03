@@ -1,0 +1,115 @@
+Dirt ChangeLog
+
+Dirt 1.0.0 alpha 28 (2013-04-09)
+  * Added password protection (for shared computers). The password can be
+    defined either as text or as a SHA-1 or MD5 hash. See "dirt.ini" and the
+    "Configuring Dirt" chapter in the manual.
+  * Added rudimentary SOCKS v5 firewall support for passworded connections.
+    It will listen on port 10588 by default.
+  * Added decryption of logged messages by psyBNC through /playprivatelog.
+  * Fixed a serious bug with /sendkey <nick> <channel> (to send channel keys)
+    that would send the key in plain text in some cases.
+  * Fixed the bug on unix-like systems where dirt.ini and dirt.key would be
+    duplicated to the working directory (very rare except with the --user and
+    --group options).
+  * Several minor bug fixes and alchemical refinements.
+
+Dirt 1.0.0 alpha 27 (2013-03-17)
+  * Added channel topic encryption/decryption. Decryption is automatic.
+    Use the "/dirt topic" command when you want to set an encrypted topic on a
+    channel.
+  * It is now compilable and fully working on x64 architectures.
+  * Added --user=X and --group=X parameters to the unix version (for use in
+    shell scripts running as root:root).
+  * The configuration file (dirt.ini) will not ever be overwritten by Dirt
+    anymore. But it is still generated if it doesn't already exist and upgraded
+    by the Windows installer (using the old one as a reference).
+  * All changes in dirt.ini will be recognized on "/dirt load".
+  * The executable is now dirtirc[.exe]. The program is still titled "Dirt",
+    this is to separate it from other programs with the same name.
+  * Improved the help system quite a bit.
+  * Added wildcard matching for /keys, /showkey and /showkeytext (you can list
+    known channel keys with /keys #* for example).
+  * A whole lot of bug fixes, optimizations and improvements here and there.
+
+Dirt 1.0.0 alpha 26 (2013-02-21)
+  * Restored the classic systray icons on Windows (due to a general preference
+    in qualitative and quantative studies, involving almost two test subjects,
+    and to help out people with colour blindness or greyscale display devices).
+  * Changed the message prefixes that are used by default (for better contrast
+    against most backgrounds).
+
+Dirt 1.0.0 alpha 25 (2006-12-17)
+  * Changed the way that the info messages are sent to the client to make it
+    work with some (buggy) mIRC theme systems.
+  * As always, a bunch of minor optimizations, clarifications and cosmetical
+    touches have been made.
+
+Dirt 1.0.0 alpha 24 (2006-12-02)
+  * Changed the location of the ini/key files on Windows, they are now
+    located under "%APPDATA%\Dirt".
+  * Old ini/key files will be imported automatically when starting Dirt,
+    with a message telling the user of the new location.
+  * Fixed a bug that would overwrite dirt.ini with defaults in some cases.
+
+Dirt 1.0.0 alpha 23 (2006-11-29)
+  * Fixed a major bug with /sendkey (not security-related however).
+
+Dirt 1.0.0 alpha 22 (2006-11-29)
+  * Added full support for nick and channel aliases. Check the /addalias
+    and /removealias commands. All commands will accept either the original
+    name or an alias when specifying a nick or channel name.
+  * Very long outgoing text (currently that's anything longer than 256
+    characters when unencrypted) will now be split into several messages
+    when using FiSH encryption. This means that you can send messages of
+    (almost) any length without risking that the IRC server cuts them off.
+  * Improved the support for dircproxy time stamps when reading encrypted
+    message logs (dates are supported now).
+
+Dirt 1.0.0 alpha 21 (2006-11-22)
+  * Added auto-upgrade functionality for Windows (on right-click menu).
+
+Dirt 1.0.0 alpha 20 (2006-11-20)
+  * Created a very nice installer for Windows, using NSIS.
+  * Added --quit and -q parameters for Windows, which quits all running
+    instances of Dirt (the installer and uninstaller uses this too).
+    Note that it will not be able to quit earlier versions with this.
+  * Fixed the CTCP DIRT reply.
+  * It now uses ~/.dirtrc for all configuration files on unix systems.
+  * Added "make install" for unix (you'll need to be root of course).
+
+Dirt 1.0.0 alpha 19 (2006-10-30)
+  * We got brand new application and systray icons, thanks to Heinzon!
+  * Under Windows, the systray icon now survives a Explorer.exe crash.
+
+Dirt 1.0.0 alpha 18 (2006-10-06)
+  * Fixed several issues with the Windows systray right-click menu.
+  * Added support for decrypting time stamped log text from dircproxy.
+  * It now automatically saves the key file when a channel key is received.
+    Yes, brane was right all along... sorry!
+  * Added the help system.
+
+Dirt 1.0.0 alpha 17 (2006-10-02)
+  * When auto-accept is enabled (which it is by default), it is limited to
+    keys for nick names. Channel key has to be accepted manually now. This
+    was done for obvious security reasons.
+
+Dirt 1.0.0 alpha 16 (2006-10-02)
+  * It is now statically linked again, so you do not need to have
+    libeay32.dll. This was a mistake on my part, sorry!
+
+Dirt 1.0.0 alpha 15 (2006-10-01)
+Dirt 1.0.0 alpha 14 (2006-09-19)
+Dirt 1.0.0 alpha 13 (2006-02-17)
+Dirt 1.0.0 alpha 12 (2006-02-16)
+Dirt 1.0.0 alpha 11 (2006-02-16)
+Dirt 1.0.0 alpha 10 (2006-02-14)
+Dirt 1.0.0 alpha 9 (2006-01-24)
+Dirt 1.0.0 alpha 8 (2006-01-23)
+Dirt 1.0.0 alpha 7 (2006-01-09)
+Dirt 1.0.0 alpha 6 (2006-01-01)
+Dirt 1.0.0 alpha 5 (2005-12-31)
+Dirt 1.0.0 alpha 4 (2005-12-30)
+Dirt 1.0.0 alpha 3 (2005-12-25)
+Dirt 1.0.0 alpha 2 (2005-12-21)
+Dirt 1.0.0 alpha 1 (2005-12-21)

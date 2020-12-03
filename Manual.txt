@@ -1,0 +1,228 @@
+                               .
+                           ,   |                  b
+                        . $| ,dl                  $b
+                      ,\$$7' $$$\  .        .     $l
+                  .,\$8`l$l  `7/` |$Q .    |$Q ._ $$    _., q Q p,
+              .,q$$ `   :$$        `" $Qs,. `" * Q$$s  * 8""^^8*$$b.
+         .,,Q$$7"`       $$:  |p,     $l `" * .   $$          . l$$P
+       d$$7*8|$`         l$l  `8$Qp,. 4l     `$b, $|          `84$P`
+       '`    :$:         :$$.    l$`8 $l.'   .d$7 S|   ,Q$Qs.
+  ::::::::::  $| :::::::  $7` :: l$   $l` ,qQ* `  7' /$P""84$b, :: d i r t ::
+              7l.     k!   ,db.  $7`  d$   `p,_   ,d `8s.   `8*b.
+      ,. q Q$$$$Q* ,_     l$$$$b ',  .8"    |$$b  :$         gs ,.
+      ` *8"^  l$`^"8*4Q ,/$$$$7 '/$   d$     gpp,  $,      ,d$$$78`
+              "|        8$$78`   l$   P`    `* $$b.`$ .,,s$$ *8`
+                          `       `                  `8 8"`
+
+                                   Dirt 1.0.0
+                               ALPHA TEST VERSION
+
+                             http://dirtirc.sf.net/
+
+                            Engineered by TmowhrekF
+                    Copyright (c) 2005-2013 Mathias Karlsson
+
+                                 Made in Borås
+
+-------------------------------------------------------------------------------
+
+Table of contents
+
+  Table of contents (you are here.)
+  The Cast
+  About this manual
+  Using Dirt
+  Configuring Dirt
+  Dirt and mIRC
+  Compiling on Unix
+  Notes
+  License
+  Descendants
+
+-------------------------------------------------------------------------------
+
+The Cast
+
+  Programming by TmowhrekF.
+  Icons by Heinzon and Zaiko.
+  ASCII graphics by Alla Xul and Keetar.
+
+  Dirt is based on jircproxy (by mignon) and FiSH.
+
+  No-one we know or care about was harmed by making this program.
+
+  Some code (x64 architecture support and unix version improvements) has been
+  contributed by antonone.
+
+-------------------------------------------------------------------------------
+
+About this manual
+
+  This manual is a work in progress.
+
+  If you can't get this program to work, or if you have a question, post a
+  message on the Help forum at http://sf.net/p/dirtirc/discussion/617347/
+  and I will try to respond as soon as possible.
+
+  If you have to contact the author personally you can do so by e-mailing
+  tmowhrekf at gmail dot com.
+
+-------------------------------------------------------------------------------
+
+Using Dirt
+
+  The installation on Windows should be pretty much straight-forward with the
+  installer. For Linux or other unix-like systems, please see the chapter
+  about compiling Dirt first.
+
+  Once Dirt is installed and running, you need to decide if you're going to
+  use it as a SOCKS proxy or as an IRC bouncer.
+
+  The most practical way is to configure it as a SOCKS proxy, because it
+  means that you can just connect to an IRC server as usual and it will
+  connect through Dirt automatically. However, not all IRC clients supports
+  this.
+
+  Dirt always listens on 127.0.0.1 (localhost), and there is no way to connect
+  to it from a different machine. Even if you're on a LAN, you need to have a
+  copy of Dirt running on each machine that will use it. This is to make sure
+  that any text that is encrypted will never be sent as plain-text through any
+  network and it is unlikely that this will change in future versions.
+
+  Dirt will listen on the following ports by default:
+
+    IRC bouncer:            port 6666
+    SOCKS version 4:        port 1088
+    SOCKS version 5:        port 10588
+
+
+        ***  Once connected, type /dirt to list all Dirt commands!  ***
+
+    (note that some IRC clients will require /quote dirt, /quote keys, etc)
+
+
+-------------------------------------------------------------------------------
+
+Configuring Dirt
+
+  Edit "dirt.ini" to change any of Dirt's settings.
+
+  On Windows, it is located in "%APPDATA%\Dirt\", which usually translates to
+  "C:\Users\<login name>\AppData\Roaming\Dirt\" or
+  "C:\Documents and Settings\<login name>\Application Data\Dirt\".
+
+  On Unix, you will find it in ".dirtrc/" under the home directory.
+
+  To generate this file or to upgrade it from a previous version (keeping all
+  changes intact) run "dirtirc --upgrade".
+  The Windows installer will do so automatically.
+
+  Use the "/dirt load" command to reload "dirt.ini" after making changes.
+
+  Some examples of available settings:
+    * Which proxy modes to use (socks5, socks4, bouncer) and their ports.
+    * IRC bouncer behavior (/dirt jump).
+    * Whether it should accept keys automatically from nick names.
+    * Password protection.
+
+-------------------------------------------------------------------------------
+
+Dirt and mIRC
+
+  In mIRC, go to "Tools -> Options..." in the menu (or press Alt+O).
+  Then go to the "Connect" category and select "Firewall".
+  There, use the following settings:
+
+    Firewall support:       Server
+    Protocol:               Socks4
+    Hostname:               127.0.0.1
+    Port:                   1088
+
+  Leave the other text fields blank.
+
+  You can also do the same with this mIRC command:
+
+    /firewall -m4-d on 127.0.0.1 1088
+
+  Now just make sure that Dirt is running when you connect to an IRC server,
+  and you're done!
+
+
+  For passworded connections, use SOCKS v5 instead.
+  For example, if your password is s3cr3t then use these settings:
+
+    Firewall support:       Server
+    Protocol:               Socks5
+    Hostname:               127.0.0.1
+    User ID:                dirt
+    Password:               s3cr3t
+    Port:                   10588
+
+  Or:
+
+    /firewall -m5-d on 127.0.0.1 10588 dirt s3cr3t
+
+  The User ID field is not used so you can set it to anything you want
+  but it can not be empty if you are using a password.
+
+-------------------------------------------------------------------------------
+
+Compiling on Unix
+
+  Unarchive the source code somewhere and type "make unix" in that directory to
+  build the stand-alone "dirtirc" binary.
+
+  On FreeBSD-derived systems, use "gmake unix" instead.
+
+  If you have super-user access (root) you can install dirt for all users with
+  "sudo make install".
+
+-------------------------------------------------------------------------------
+
+Notes
+
+  dirt-*-install.exe is a Windows installer.
+  dirt-*-source.tar.gz and dirt-*-source.zip is the source code.
+
+  The latest released version of both can be downloaded from SourceForge at
+  http://sf.net/p/dirtirc/files/
+
+  Dirt has been tested with success on Windows, Linux and FreeBSD.
+
+  The Windows executable is compiled with Microsoft Visual Studio 2008 and
+  all non-MS libraries are statically linked.
+  It is currently using OpenSSL 0.9.8y.
+  There are no precompiled binaries for other systems at this time.
+
+  You will need to have these libraries to compile it:
+    * OpenSSL Crypto library (you NEED version 0.9.8 or above).
+      On unix-like systems, the apt package is usually named libssl-dev.
+
+  To build the installer you also need to have the Nullsoft Scriptable Install
+  System (NSIS).
+
+  To use makefiles efficiently on Windows systems, you really should get some
+  of the ported GNU command-line tools... MinGW or Cygwin packages will do
+  just fine.
+
+-------------------------------------------------------------------------------
+
+License
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  See License.txt for more details.
+
+-------------------------------------------------------------------------------
+
+Descendants
+
+  Parts of Dirt is being used in:
+    * Textual, a commercial IRC client for Mac OS X (by special permission).
+    * FiSH 10, a rewrite of the FiSH v1.30 core that supports mIRC version 7.
+    * FiSHy, a plugin for the Mac OS X IRC client Colloquy.
+
+                                                                            eof

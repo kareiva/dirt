@@ -1,0 +1,19 @@
+To-do-list for the Dirt IRC proxy
+
+Note: When these are added to the SourceForge site (Bugs or Feature Requests)
+they are removed from this list.
+
+* Add an option to periodically check for upgrades on Windows systems.
+
+* Add a simple status window for the Windows version, accessible from the
+  notification area (systray). Also a --status parameter for Unix.
+
+* Improve "dirtirc --quit" behavior on Windows to quit only a conflicting
+  dirt.exe (for better multi-user support, or for people running several
+  instances on different ports) and to work with older versions.
+
+* Encapsulate the Unix and Windows code into a try-catch block (for more
+  informational error messages).
+
+* Use a different implementation of the SHA256 function (it should compile
+  with OpenSSL 0.9.7), like FiSHy does.

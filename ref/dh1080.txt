@@ -1,0 +1,12 @@
+Diffie-Hellman 1080bit Key-exchange
+***********************************
+
+
+For Diffie-Hellman key-exchange a 1080bit germain prime is used, the
+generator g=2 renders a field Fp from 1 to p-1. Therefore breaking it
+means to solve a discrete logarithm problem with no less than 1080bit.
+
+Base64 format is used to send the public keys over IRC.
+
+The calculated secret key is hashed with SHA-256, the result is converted
+to base64 for final use with blowfish.
